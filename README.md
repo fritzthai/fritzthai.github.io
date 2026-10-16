@@ -1,0 +1,1 @@
+# fritzthai.github.io
