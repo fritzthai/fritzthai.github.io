@@ -61,3 +61,6 @@ if(!matchMedia('(prefers-reduced-motion: reduce)').matches){
  window.addEventListener('scroll',scheduleScroll,{passive:true});window.addEventListener('resize',scheduleScroll);paintScroll();
  if('IntersectionObserver' in window){const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('visible');observer.unobserve(entry.target)}}),{threshold:.1});document.querySelectorAll('.process-grid article,.routine-grid article,.style-grid article,.kit-grid article').forEach(node=>observer.observe(node))}
 }
+// A collapsed presentation should never keep playing out of view.
+const videoDisclosure=document.querySelector('#video-disclosure');
+videoDisclosure?.addEventListener('toggle',()=>{if(!videoDisclosure.open){const player=videoDisclosure.querySelector('video');player?.pause()}});
